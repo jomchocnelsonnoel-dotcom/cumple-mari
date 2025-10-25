@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumpleaños Mari 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6e0, #fff1f5);
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #ff5c8d;
+      text-shadow: 0 0 10px rgba(255, 92, 141, 0.5);
+      animation: aparecer 3s ease-in-out;
+    }
+
+    p {
+      font-size: 1.3rem;
+      color: #6a4e63;
+      max-width: 600px;
+      line-height: 1.6;
+      animation: aparecer 5s ease-in-out;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-musica {
+      margin-top: 25px;
+      background-color: #ff8fab;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      padding: 12px 25px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+      transition: transform 0.2s ease;
+    }
+
+    .btn-musica:hover {
+      transform: scale(1.05);
+      background-color: #ff6e91;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      width: 20px;
+      height: 20px;
+      background-color: #ff85a2;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff85a2;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(45deg) scale(1.3); opacity: 0; }
+    }
+
+    .nota {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #a05b7a;
+      background-color: #fff5f8;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 1px dashed #ffc2d1;
+    }
+  </style>
+</head>
+<body>
+  <h1>💐 Feliz Cumpleaños, Mari 💐</h1>
+  <p>
+    Hoy es un día tan especial como tú.  
+    Que cada instante esté lleno de sonrisas, flores y momentos hermosos.  
+    Eres una persona increíble, de esas que iluminan los días con solo estar cerca.  
+    Gracias por tu dulzura, por tu amistad y por el brillo que dejas en todo lo que haces.  
+    Que la vida te regale amor, paz y muchos sueños cumplidos. 💖  
+  </p>
+
+  <!-- 🎵 Aquí va tu música descargada -->
+  <audio id="miCancion" src="cancion.mp3"></audio>
+
+  <!-- 🎶 Botón para iniciar la música -->
+  <button class="btn-musica" onclick="reproducirMusica()">🎵 Reproducir música</button>
+
+  <script>
+    // Corazones flotando
+    function crearCorazon() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(crearCorazon, 400);
+
+    // Reproducir y pausar música
+    function reproducirMusica() {
+      const audio = document.getElementById("miCancion");
+      const boton = document.querySelector(".btn-musica");
+
+      if (audio.paused) {
+        audio.play();
+        boton.textContent = "⏸️ Pausar música";
+      } else {
+        audio.pause();
+        boton.textContent = "🎵 Reproducir música";
+      }
+    }
+  </script>
+</body>
+</html>
